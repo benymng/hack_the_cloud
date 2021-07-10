@@ -1,7 +1,7 @@
 from flask import Flask, make_response, jsonify, request
 from flask_cors import CORS
 
-import scrape, vision
+from functions import scrape, vision
 
 
 app = Flask(__name__)
@@ -18,7 +18,7 @@ def index():
     return make_response(jsonify(data), 200)
 
 @app.route("/search", methods=["POST"])
-def index():
+def search():
     query = request.json["query"]
     url = "https://www.allrecipes.com/search/results/?search=" + query
     found_html = scrape.find_html(url)
