@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import useRecipeSearch from "../../hooks/useRecipeSearch";
 
@@ -11,12 +11,14 @@ const Search = (props) => {
 
   const searchField = props.location.state?.searchField;
 
-  if (!searchField) props.history.push("/");
+  useEffect(() => {
+    search(searchField, (results) => {
+      setLoading(false);
+      setSearchResults(results);
+    });
+  }, [searchField]);
 
-  search(searchField, (results) => {
-    setLoading(false);
-    setSearchResults(results);
-  });
+  if (!searchField) props.history.push("/");
 
   if (loading) return <Loading />;
 
