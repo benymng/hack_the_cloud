@@ -6,6 +6,7 @@ def load_food_name():
     return names
 
 def recognize_food(img_path, list_foods):
+    foods = []
     # Imports the Google Cloud client library
     from google.cloud import vision
         
@@ -25,15 +26,18 @@ def recognize_food(img_path, list_foods):
     response = client.label_detection(image=image)
     labels = response.label_annotations
 
-    print("Descriptions: ")
     for label in labels:
         description = label.description.lower()
         if (description in list_foods):
-            print (description)
+            foods.append(description)
     
+    return foods
 
-recognize_food("./pictures/blue guys.jpg", load_food_name())
-
+def make_new_url(food_names):    
+    url = "https://www.allrecipes.com/search/results/?search="
+    for food in food_names:
+        url = url + "&IngIncl=" + food
+    return url
 
 
 

@@ -10,7 +10,38 @@ def find_html(my_url):
     page_soup = soup(page_html, "html.parser")
     return page_soup
 
+#after computer vision gets ingredients
 
+def find_recipe_names(page_soup):
+    recipe_names = []
+    containers = page_soup.findAll("div", {"class": "search-results-content-container"})
+    container = containers[0]
+    names = container.findAll("h3", {"class": "card__title"})
+    for name in names:
+        recipe_names.append(name.text.strip())
+    return recipe_names
+
+def find_href(page_soup):
+    hrefs = []
+    start_url = "https://www.allrecipes.com/recipe"
+
+    containers = page_soup.findAll("div", {"class": "search-results-content-container"})
+    container = containers[0]
+    for a in container.findAll('a', href=True):
+        if start_url in a['href'] and a['href'] not in hrefs:
+            hrefs.append(a['href'])
+            
+    return hrefs
+        
+    
+    # for name in names:
+    #     hrefs.append(name.href)
+    #     print(name.href)
+    # return hrefs 
+
+
+#after user picks which recipe they want
+    
 def find_ingredients(page_soup):
     ingredient_names = []
 
@@ -30,6 +61,8 @@ def find_directions(page_soup):
         directions.append(p.text)
     
     return directions
+
+
 
 
 
