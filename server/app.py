@@ -25,12 +25,14 @@ def search():
 
     names = scrape.find_recipe_names(found_html)
     hrefs = scrape.find_href(found_html)
+    images = scrape.find_image(found_html)
+    descriptions = scrape.find_description(found_html)
 
     recipes_dict = dict.fromkeys(['name','href'])
     list_of_dicts = []
 
-    for (name, link) in zip(names, hrefs):
-        recipes_dict = {"name": name, "href": link}
+    for (name, link, image, description) in zip(names, hrefs, images, descriptions):
+        recipes_dict = {"name": name, "href": link, "image": image, "descriptions": description}
         list_of_dicts.append(recipes_dict)
 
     return make_response(jsonify(list_of_dicts), 200)
