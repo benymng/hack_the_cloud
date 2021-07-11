@@ -7,7 +7,7 @@ from functions import scrape, vision
 
 
 app = Flask(__name__)
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
 app.config['SECRET_KEY'] = 'testajdsfkljalsdfjajkdf;ljkasf'
 CORS(app)
 
