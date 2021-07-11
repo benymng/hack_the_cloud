@@ -17,8 +17,6 @@ const useRecipeSearch = () => {
 
     const recipes = await response.json();
 
-    console.log(recipes);
-
     callback(recipes);
   };
 
