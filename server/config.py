@@ -5,5 +5,5 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-DEBUG = True
+DEBUG = False
 SECRET_KEY = os.environ["SECRET_KEY"]
