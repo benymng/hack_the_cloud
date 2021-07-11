@@ -119,7 +119,13 @@ const Recipe = (props) => {
             style={{ position: "sticky", bottom: "2em" }}
             size="large"
           >
-            <Typography fontWeight="fontWeightBold" style={{ color: "white" }}>
+            <Typography
+              fontWeight="fontWeightBold"
+              style={{ color: "white" }}
+              onClick={() => {
+                props.history.push("/cook", { recipe: recipeDetails });
+              }}
+            >
               Cook!
             </Typography>
           </Button>
