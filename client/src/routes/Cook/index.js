@@ -1,15 +1,5 @@
 import { useState } from "react";
 
-import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
-
-import {
-  blueGrey,
-  cyan,
-  green,
-  lightGreen,
-  orange,
-  red,
-} from "@material-ui/core/colors";
 import {
   Avatar,
   Grid,
@@ -17,15 +7,14 @@ import {
   Slider,
   Typography,
 } from "@material-ui/core";
-
 import {
   ArrowBackIosRounded,
   ArrowForwardIosRounded,
   ClearRounded,
   ReplayRounded,
 } from "@material-ui/icons";
-import { styled } from "@material-ui/styles";
-import Webcam from "react-webcam";
+import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
+import { blueGrey, cyan, orange, red } from "@material-ui/core/colors";
 
 import useStep from "../../hooks/useStep";
 
@@ -147,13 +136,18 @@ const Cook = (props) => {
         </Grid>
       </Grid>
 
+      <Grid item width="100%" marginTop="auto">
+        <Typography variant="h4">
+          {!moreSectionsForward() ? "Complete" : currentSection.array[step]}
+        </Typography>
+      </Grid>
+
       <Grid
         item
         width="100%"
         container
         alignItems="center"
         justifyContent="space-between"
-        marginTop="auto"
       >
         <Grid item>
           <IconButton onClick={back} disabled={disableBack}>
