@@ -75,10 +75,25 @@ def find_directions(page_soup):
         directions.append(p.text)
     return directions
 
-found_url = find_html("https://www.allrecipes.com/search/results/?search=chicken")
-# find_image(found_url)
-find_description(found_url)
+def find_title(page_soup):
+    h1_tag = page_soup.find("h1")
+    return h1_tag.text.strip()
 
+def find_image_for_recipe(page_soup):
+    container = page_soup.find("div", {"class": "image-container"})
+    image = container.find("img")
+    return image['src']
+
+def find_description_for_recipe(page_soup):
+    container = page_soup.find("div", {"class": "recipe-summary"})
+    description = container.find("p")
+    return description.text.strip()
+
+
+found_url = find_html("https://www.allrecipes.com/recipe/166862/summer-special-shrimp-and-fruit-fried-rice/")
+# find_image(found_url)
+# find_description(found_url)
+find_description_for_recipe(found_url)
 
 
 

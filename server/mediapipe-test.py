@@ -7,7 +7,7 @@ mp_hands = mp.solutions.hands
 IMAGE_FILES = []
 with mp_hands.Hands(
     static_image_mode=True,
-    max_num_hands=2,
+    max_num_hands=1,
     min_detection_confidence=0.5) as hands:
   for idx, file in enumerate(IMAGE_FILES):
     # Read an image, flip it around y-axis for correct handedness output (see
@@ -49,10 +49,12 @@ with mp_hands.Hands(
     # Flip the image horizontally for a later selfie-view display, and convert
     # the BGR image to RGB.
     image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
+    print(image)
     # To improve performance, optionally mark the image as not writeable to
     # pass by reference.
     image.flags.writeable = False
     results = hands.process(image)
+    print(results.multi_hand_landmarks)
 
     # Draw the hand annotations on the image.
     image.flags.writeable = True
