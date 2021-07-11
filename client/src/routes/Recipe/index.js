@@ -81,7 +81,7 @@ const Recipe = (props) => {
           </Grid>
 
           <Grid item style={{ margin: "0 2em 4em 2em" }}>
-            <Typography marginBottom={2} style={{ fontStyle: "italic" }}>
+            <Typography style={{ fontStyle: "italic", marginBottom: 2 }}>
               {recipeDetails.description}
             </Typography>
 
@@ -89,7 +89,7 @@ const Recipe = (props) => {
               Ingredients
             </Typography>
 
-            <List marginBottom={2}>
+            <List style={{ marginBottom: 2 }}>
               {recipeDetails.ingredients.map((ingredient, idx) => (
                 <ListItem key={idx}>
                   <ListItemIcon>{<Checkbox />}</ListItemIcon>
