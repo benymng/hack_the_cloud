@@ -4,7 +4,7 @@ import { truncate } from "../utils/text";
 
 const RecipeCard = ({
   name,
-  descriptions,
+  description,
   image,
   href,
   handleImageLoad,
@@ -39,7 +39,7 @@ const RecipeCard = ({
               style={{ lineHeight: "0.8em", width: "100%" }}
               color="textSecondary"
             >
-              {truncate(descriptions, 105)}
+              {truncate(description, 105)}
             </Typography>
           </div>
         </Grid>
