@@ -40,21 +40,27 @@ const Search = (props) => {
         <Grid
           container
           direction="column"
-          alignContent="center"
+          alignItems="center"
           style={{ display: allImagesLoaded ? null : "none" }}
         >
-          <LogoHeader />
-          <Typography textAlign="center" variant="h4">
-            Search Results
-          </Typography>
-          <Button
-            onClick={back}
-            color="secondary"
-            startIcon={<ChevronLeftRounded />}
-            style={{ margin: "0.5em 0" }}
-          >
-            Back
-          </Button>
+          <Grid item>
+            <LogoHeader />
+          </Grid>
+          <Grid item>
+            <Typography textAlign="center" variant="h4">
+              Search Results
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Button
+              onClick={back}
+              color="secondary"
+              startIcon={<ChevronLeftRounded />}
+              style={{ margin: "0.5em 0" }}
+            >
+              Back
+            </Button>
+          </Grid>
           <Grid
             container
             spacing={2}
@@ -82,6 +88,11 @@ const Search = (props) => {
               </Grid>
             ))}
           </Grid>
+          {searchResults.length === 0 && (
+            <Typography variant="h6" color="textSecondary" align="center">
+              Sorry, no results were found.
+            </Typography>
+          )}
         </Grid>
       )}
     </>
