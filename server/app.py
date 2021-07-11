@@ -7,10 +7,9 @@ from functions import scrape, vision
 
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*")
-app.config['SECRET_KEY'] = 'testajdsfkljalsdfjajkdf;ljkasf'
 CORS(app)
 
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 @app.route("/", methods=["GET"])
 def index():
@@ -95,6 +94,20 @@ def recipe():
 @socketio.on('socket')
 def socket():
     print("Success")
+
+@socketio.on('my event')
+def handle_event(data):
+    print('event', data)
+
+@socketio.on('connect')
+def handle_connect():
+    print('conntected')
+
+@socketio.on('disconnect')
+def hand_disconnect():
+    print('disconnected')
+
+
     
 
 if __name__ == "__main__":
