@@ -70,6 +70,11 @@ const Search = (props) => {
                 <RecipeCard
                   {...recipeDetails}
                   key={recipeDetails.href}
+                  openRecipe={() => {
+                    props.history.push("/recipe", {
+                      recipeHref: recipeDetails.href,
+                    });
+                  }}
                   handleImageLoad={() => {
                     setImagesLoaded(imagesLoaded + 1);
                   }}

@@ -2,9 +2,16 @@ import { Paper, Grid, Typography } from "@material-ui/core";
 
 import { truncate } from "../utils/text";
 
-const RecipeCard = ({ name, descriptions, image, href, handleImageLoad }) => {
+const RecipeCard = ({
+  name,
+  descriptions,
+  image,
+  href,
+  handleImageLoad,
+  openRecipe,
+}) => {
   return (
-    <Paper elevation={5}>
+    <Paper elevation={5} onClick={openRecipe}>
       <Grid container>
         <Grid item xs={4} style={{ padding: "0.5em" }}>
           <img
