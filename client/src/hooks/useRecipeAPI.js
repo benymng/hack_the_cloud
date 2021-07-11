@@ -1,5 +1,5 @@
-const useRecipeSearch = () => {
-  const search = async (query, callback) => {
+const useRecipeAPI = () => {
+  const searchAllRecipes = async (query, callback) => {
     const data = {
       query: query,
     };
@@ -21,8 +21,8 @@ const useRecipeSearch = () => {
   };
 
   return {
-    search,
+    searchAllRecipes,
   };
 };
 
-export default useRecipeSearch;
+export default useRecipeAPI;

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Button, Grid, Typography } from "@material-ui/core";
 
-import useRecipeSearch from "../../hooks/useRecipeSearch";
+import useRecipeAPI from "../../hooks/useRecipeAPI";
 
 import Loading from "../../components/Loading";
 import RecipeCard from "../../components/RecipeCard";
@@ -13,12 +13,12 @@ const Search = (props) => {
   const [loading, setLoading] = useState(true);
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [searchResults, setSearchResults] = useState([]);
-  const { search } = useRecipeSearch();
+  const { searchAllRecipes } = useRecipeAPI();
 
   const searchField = props.location.state?.searchField;
 
   useEffect(() => {
-    search(searchField, (results) => {
+    searchAllRecipes(searchField, (results) => {
       setLoading(false);
       setSearchResults(results);
     });
