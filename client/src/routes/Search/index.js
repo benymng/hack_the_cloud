@@ -36,7 +36,7 @@ const Search = (props) => {
   return (
     <>
       {(loading || !allImagesLoaded) && <Loading />}
-      {!loading && (
+      {!loading && searchResults && (
         <Grid
           container
           direction="column"
