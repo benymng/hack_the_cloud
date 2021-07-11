@@ -80,7 +80,7 @@ const Recipe = (props) => {
             />
           </Grid>
 
-          <Grid item style={{ margin: "0 2em 5em 2em" }}>
+          <Grid item style={{ margin: "0 2em 4em 2em" }}>
             <Typography marginBottom={2} style={{ fontStyle: "italic" }}>
               {recipeDetails.description}
             </Typography>
@@ -114,6 +114,15 @@ const Recipe = (props) => {
               ))}
             </List>
           </Grid>
+          <Button
+            variant="contained"
+            style={{ position: "sticky", bottom: "2em" }}
+            size="large"
+          >
+            <Typography fontWeight="fontWeightBold" style={{ color: "white" }}>
+              Cook!
+            </Typography>
+          </Button>
         </Grid>
       )}
     </>
