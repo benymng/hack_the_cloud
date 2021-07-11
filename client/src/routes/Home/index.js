@@ -15,6 +15,8 @@ const Home = (props) => {
   const [searchField, setSearchField] = useState("");
 
   const search = () => {
+    if (!searchField) return;
+
     props.history.push("/search", { searchField });
   };
 
