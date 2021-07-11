@@ -80,7 +80,7 @@ const Recipe = (props) => {
             />
           </Grid>
 
-          <Grid item style={{ margin: "0 2em" }}>
+          <Grid item style={{ margin: "0 2em 5em 2em" }}>
             <Typography marginBottom={2} style={{ fontStyle: "italic" }}>
               {recipeDetails.description}
             </Typography>
@@ -108,6 +108,7 @@ const Recipe = (props) => {
                   <ListItemIcon>
                     <div>{idx + 1}</div>
                   </ListItemIcon>
+
                   <ListItemText>{step}</ListItemText>
                 </ListItem>
               ))}
