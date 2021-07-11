@@ -15,7 +15,6 @@ import {
 import useRecipeAPI from "../../hooks/useRecipeAPI";
 
 import Loading from "../../components/Loading";
-import RecipeCard from "../../components/RecipeCard";
 import LogoHeader from "../../components/LogoHeader";
 import { ChevronLeftRounded } from "@material-ui/icons";
 

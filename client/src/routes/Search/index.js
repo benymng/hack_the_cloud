@@ -75,7 +75,7 @@ const Search = (props) => {
               <Grid item style={{ width: "100%" }}>
                 <RecipeCard
                   {...recipeDetails}
-                  key={recipeDetails.href}
+                  key={idx + recipeDetails}
                   openRecipe={() => {
                     props.history.push("/recipe", {
                       recipeHref: recipeDetails.href,

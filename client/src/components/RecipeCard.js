@@ -43,9 +43,13 @@ const RecipeCard = ({
           <div style={{ height: "5em" }}>
             <Typography
               variant="caption"
-              style={{ lineHeight: "0.8em", width: "100%" }}
+              style={{
+                lineHeight: "0.8em",
+                width: "100%",
+                userSelect: "none",
+                WebkitUserSelect: "none",
+              }}
               color="textSecondary"
-              style={{ userSelect: "none", WebkitUserSelect: "none" }}
             >
               {truncate(description, 105)}
             </Typography>
