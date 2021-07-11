@@ -37,6 +37,7 @@ const useRecipeAPI = () => {
 
   return {
     searchAllRecipes,
+    fetchRecipe,
   };
 };
 
