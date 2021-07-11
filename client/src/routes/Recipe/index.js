@@ -81,7 +81,7 @@ const Recipe = (props) => {
           </Grid>
 
           <Grid item style={{ margin: "0 2em" }}>
-            <Typography marginBottom={2}>
+            <Typography marginBottom={2} style={{ fontStyle: "italic" }}>
               {recipeDetails.description}
             </Typography>
 
