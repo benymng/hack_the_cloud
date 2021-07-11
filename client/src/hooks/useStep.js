@@ -23,14 +23,14 @@ const useStep = (max, min = 1, initialStep = min) => {
     setStep(initialStep);
   };
 
-  return {
+  return [
     step,
     nextStep,
     previousStep,
     moreStepsForward,
     moreStepsBackward,
     setInitialStep,
-  };
+  ];
 };
 
 export default useStep;
