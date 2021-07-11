@@ -89,11 +89,11 @@ def find_description_for_recipe(page_soup):
     description = container.find("p")
     return description.text.strip()
 
-
-found_url = find_html("https://www.allrecipes.com/recipe/166862/summer-special-shrimp-and-fruit-fried-rice/")
-# find_image(found_url)
-# find_description(found_url)
-find_description_for_recipe(found_url)
+if __name__ == "__main__":
+    found_url = find_html("https://www.allrecipes.com/recipe/166862/summer-special-shrimp-and-fruit-fried-rice/")
+    # find_image(found_url)
+    # find_description(found_url)
+    find_description_for_recipe(found_url)
 
 
 

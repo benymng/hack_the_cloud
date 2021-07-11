@@ -40,19 +40,19 @@ def search():
 @app.route("/recipe", methods=["POST"])
 def recipe():
     recipe_href = request.json["recipeHref"]
-    recipe_dict = dict.fromkeys(['image', 'ingredients', 'steps', 'title', 'description'])
+    recipe_dict = dict.fromkeys(['image', 'ingredients', 'steps', 'name', 'description'])
 
     found_html = scrape.find_html(recipe_href)
     directions = scrape.find_directions(found_html)
     ingredients = scrape.find_ingredients(found_html)
     image = scrape.find_image_for_recipe(found_html)
-    title = scrape.find_title(found_html)
+    name = scrape.find_title(found_html)
     description = scrape.find_description_for_recipe(found_html)
 
     recipe_dict['ingredients'] = ingredients
     recipe_dict['steps'] = directions
     recipe_dict['image'] = image
-    recipe_dict['title'] = title
+    recipe_dict['name'] = name
     recipe_dict['description'] = description
 
     return make_response(jsonify(recipe_dict), 200)
