@@ -24,12 +24,19 @@ const Search = (props) => {
     });
   }, [searchField]);
 
+  useEffect(() => {
+    if (props.location.state?.searchResults) {
+      setLoading(false);
+      setSearchResults(props.location.state.searchResults);
+    } else if (!searchField) {
+      props.history.push("/");
+    }
+  }, []);
+
   const back = () => {
     props.history.push("/");
     setImagesLoaded(0);
   };
-
-  if (!searchField) props.history.push("/");
 
   const allImagesLoaded = imagesLoaded === searchResults.length;
 
@@ -79,6 +86,7 @@ const Search = (props) => {
                   openRecipe={() => {
                     props.history.push("/recipe", {
                       recipeHref: recipeDetails.href,
+                      searchResults,
                     });
                   }}
                   handleImageLoad={() => {

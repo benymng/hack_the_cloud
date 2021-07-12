@@ -35,9 +35,20 @@ const useRecipeAPI = () => {
     callback(recipe);
   };
 
+  const identifyIngredients = async (screenshot, callback) => {
+    const data = {
+      screenshot,
+    };
+
+    const ingredients = await callAPI("ingredients", data);
+
+    callback(ingredients);
+  };
+
   return {
     searchAllRecipes,
     fetchRecipe,
+    identifyIngredients,
   };
 };
 

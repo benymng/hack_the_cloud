@@ -34,12 +34,16 @@ const Recipe = (props) => {
     });
   }, [recipeHref]);
 
+  useEffect(() => {
+    if (!recipeHref) props.history.push("/search");
+  }, []);
+
   const back = () => {
-    props.history.push("/search");
+    props.history.push("/search", {
+      searchResults: props.location.state?.searchResults,
+    });
     setImageLoaded(false);
   };
-
-  if (!recipeHref) props.history.push("/search");
 
   return (
     <>
