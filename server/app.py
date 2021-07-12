@@ -11,6 +11,7 @@ CORS(app)
 
 # socketio = SocketIO(app, cors_allowed_origins="*")
 
+
 @app.route("/", methods=["GET"])
 def index():
     data = {
@@ -18,6 +19,7 @@ def index():
     }
 
     return make_response(jsonify(data), 200)
+
 
 @app.route("/search", methods=["POST"])
 def search():
@@ -30,7 +32,7 @@ def search():
     images = scrape.find_image(found_html)
     descriptions = scrape.find_description(found_html)
 
-    recipes_dict = dict.fromkeys(['name','href'])
+    recipes_dict = dict.fromkeys(['name', 'href'])
     list_of_dicts = []
 
     for (name, link, image, description) in zip(names, hrefs, images, descriptions):
@@ -38,6 +40,7 @@ def search():
         list_of_dicts.append(recipes_dict)
 
     return make_response(jsonify(list_of_dicts), 200)
+
 
 @app.route("/recipe", methods=["POST"])
 def recipe():
@@ -90,13 +93,14 @@ def recipe():
 #         out.write(response.audio_content)
 #         print('Audio content written to file "output.mp3"')
 
+
 @app.route('/ingredients', methods=["POST"])
 def identify_ingredients():
     screenshot = request.json["screenshot"]
 
     image_name = vision.decode(screenshot)
     foods_found = vision.recognize_food(image_name, vision.load_food_name)
-    url= vision.make_new_url(foods_found)
+    url = vision.make_new_url(foods_found)
 
     found_html = scrape.find_html(url)
 
@@ -105,7 +109,7 @@ def identify_ingredients():
     images = scrape.find_image(found_html)
     descriptions = scrape.find_description(found_html)
 
-    recipes_dict = dict.fromkeys(['name','href'])
+    recipes_dict = dict.fromkeys(['name', 'href'])
     list_of_dicts = []
 
     for (name, link, image, description) in zip(names, hrefs, images, descriptions):
@@ -113,7 +117,7 @@ def identify_ingredients():
         list_of_dicts.append(recipes_dict)
 
     return make_response(jsonify(list_of_dicts), 200)
-    
+
 
 # @socketio.on('socket')
 # def socket():
@@ -134,6 +138,4 @@ def identify_ingredients():
 
 if __name__ == "__main__":
     # socketio.run(app)
-    app.run()
-
-
+    app.run(port=5001)
