@@ -7,6 +7,7 @@ from functions import scrape, vision
 
 
 app = Flask(__name__)
+app.config.from_object("config")
 CORS(app)
 
 # socketio = SocketIO(app, cors_allowed_origins="*")
@@ -23,6 +24,8 @@ def index():
 
 @app.route("/search", methods=["POST"])
 def search():
+    # if "query" not in request.json:
+    #     return make_response(jsonify({}), 400)
     query = request.json["query"]
     url = "https://www.allrecipes.com/search/results/?search=" + query
     found_html = scrape.find_html(url)
@@ -99,7 +102,7 @@ def identify_ingredients():
     screenshot = request.json["screenshot"]
 
     image_name = vision.decode(screenshot)
-    foods_found = vision.recognize_food(image_name, vision.load_food_name)
+    foods_found = vision.recognize_food(image_name, vision.load_food_name())
     url = vision.make_new_url(foods_found)
 
     found_html = scrape.find_html(url)
