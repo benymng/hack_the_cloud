@@ -2,6 +2,7 @@ import io
 import os
 import base64
 import uuid
+from google.cloud import vision
 
 
 def load_food_name():
@@ -20,9 +21,6 @@ def decode(img_data):
 
 def recognize_food(img_path, list_foods):
     foods = []
-    # Imports the Google Cloud client library
-    from google.cloud import vision
-
     # Instantiates a client
     client = vision.ImageAnnotatorClient()
     print("got client")
