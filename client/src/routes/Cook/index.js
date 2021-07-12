@@ -11,10 +11,9 @@ import {
   ArrowBackIosRounded,
   ArrowForwardIosRounded,
   ClearRounded,
-  ReplayRounded,
 } from "@material-ui/icons";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
-import { blueGrey, cyan, orange, red } from "@material-ui/core/colors";
+import { cyan, orange, red } from "@material-ui/core/colors";
 
 import useStep from "../../hooks/useStep";
 
@@ -85,7 +84,7 @@ const Cook = (props) => {
     props.history.push("/");
   };
 
-  const replay = () => {};
+  // const replay = () => {};
 
   if (!recipe) props.history.push("/");
 
@@ -186,8 +185,6 @@ const Cook = (props) => {
       </Grid>
     </Grid>
   );
-
-  return <pre>{JSON.stringify(props.location.state.recipe, null, 2)}</pre>;
 };
 
 export default Cook;
