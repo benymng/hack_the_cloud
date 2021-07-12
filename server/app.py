@@ -102,9 +102,15 @@ def recipe():
 def identify_ingredients():
     screenshot = request.json["screenshot"]
 
+    print("got screenshot")
+
     image_name = vision.decode(screenshot)
+    print("got image name")
     foods_found = vision.recognize_food(image_name, vision.load_food_name())
+    print("got foods")
     url = vision.make_new_url(foods_found)
+
+    print("got url")
 
     found_html = scrape.find_html(url)
 
@@ -115,11 +121,13 @@ def identify_ingredients():
 
     recipes_dict = dict.fromkeys(['name', 'href'])
     list_of_dicts = []
+    print("scraped")
 
     for (name, link, image, description) in zip(names, hrefs, images, descriptions):
         recipes_dict = {"name": name, "href": link, "image": image, "description": description}
         list_of_dicts.append(recipes_dict)
 
+    print("returned")
     return make_response(jsonify(list_of_dicts), 200)
 
 
