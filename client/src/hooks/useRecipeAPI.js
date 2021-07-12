@@ -1,6 +1,6 @@
 const useRecipeAPI = () => {
   const callAPI = async (endpoint = "", data = {}, method = "POST") => {
-    const baseURL = "https://captain-cook-api.herokuapp.com";
+    const baseURL = "http://127.0.0.1:5001/";
 
     const response = await fetch(`${baseURL}/${endpoint}`, {
       method,

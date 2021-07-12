@@ -136,9 +136,12 @@ const Cook = (props) => {
         </Grid>
       </Grid>
 
-      <Grid item width="100%" marginTop="auto">
-        <Typography variant="h4">
-          {!moreSectionsForward() ? "Complete" : currentSection.array[step]}
+      <Grid item width="100%" marginTop="auto" marginBottom="auto">
+        <Typography
+          variant="h4"
+          textAlign={!moreSectionsForward() ? "center" : "left"}
+        >
+          {!moreSectionsForward() ? "Complete!" : currentSection.array[step]}
         </Typography>
       </Grid>
 
