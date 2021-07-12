@@ -1,4 +1,4 @@
-Inspiration
+##Inspiration##
 
 Our inspiration for Captain Cook was our personal experiences with cooking at home as a result of the COVID-19 pandemic. With restaurants closed for most of the year, learning to cook became an essential skill for nearly everyone. However, one of the struggles with home cooking is finding recipes that match what ingredients you have. Unlike restaurants where the same ingredients are used for several dishes throughout the day, eating the same recipe several times at home is not very enjoyable. We recognized that some apps and websites accommodated this problem by allowing users to input what ingredients they had. Still, we found that they weren't very practical, given that you have to input each ingredient individually. To improve this process, we used the Google Vision API to determine what foods you have by taking a picture of your countertop or fridge.
 
