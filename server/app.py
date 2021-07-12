@@ -1,16 +1,15 @@
 from flask import Flask, make_response, jsonify, request
 from flask_cors import CORS
 # from google.cloud import texttospeech
-from flask_socketio import SocketIO
+# from flask_socketio import SocketIO
 
 from functions import scrape, vision
 
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*")
-app.config['SECRET_KEY'] = 'testajdsfkljalsdfjajkdf;ljkasf'
 CORS(app)
 
+# socketio = SocketIO(app, cors_allowed_origins="*")
 
 @app.route("/", methods=["GET"])
 def index():
@@ -90,16 +89,51 @@ def recipe():
 #         # Write the response to the output file.
 #         out.write(response.audio_content)
 #         print('Audio content written to file "output.mp3"')
+
+@app.route('/ingredients', methods=["POST"])
+def identify_ingredients():
+    screenshot = request.json["screenshot"]
+
+    image_name = vision.decode(screenshot)
+    foods_found = vision.recognize_food(image_name, vision.load_food_name)
+    url= vision.make_new_url(foods_found)
+
+    found_html = scrape.find_html(url)
+
+    names = scrape.find_recipe_names(found_html)
+    hrefs = scrape.find_href(found_html)
+    images = scrape.find_image(found_html)
+    descriptions = scrape.find_description(found_html)
+
+    recipes_dict = dict.fromkeys(['name','href'])
+    list_of_dicts = []
+
+    for (name, link, image, description) in zip(names, hrefs, images, descriptions):
+        recipes_dict = {"name": name, "href": link, "image": image, "description": description}
+        list_of_dicts.append(recipes_dict)
+
+    return make_response(jsonify(list_of_dicts), 200)
     
 
-@socketio.on('socket')
-def socket():
-    print("Success")
-    
+# @socketio.on('socket')
+# def socket():
+#     print("Success")
+
+# @socketio.on('my event')
+# def handle_event(data):
+#     print('event', data)
+
+# @socketio.on('connect')
+# def handle_connect():
+#     print('conntected')
+
+# @socketio.on('disconnect')
+# def hand_disconnect():
+#     print('disconnected')
+
 
 if __name__ == "__main__":
-    print('[INFO] Starting server at http://localhost:5001')
-    socketio.run(app=app, host='0.0.0.0', port=5001)
-    # app.run()
+    # socketio.run(app)
+    app.run()
 
 
