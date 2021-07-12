@@ -9,7 +9,6 @@ import {
   ListItemText,
   ListItemIcon,
   Checkbox,
-  Fab,
 } from "@material-ui/core";
 
 import useRecipeAPI from "../../hooks/useRecipeAPI";

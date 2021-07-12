@@ -1,8 +1,7 @@
-import { Grid, IconButton, Zoom } from "@material-ui/core";
+import { Grid, IconButton } from "@material-ui/core";
 import { green, red } from "@material-ui/core/colors";
 import {
   CheckRounded,
-  ChevronLeftRounded,
   PhotoCameraRounded,
   ReplayRounded,
 } from "@material-ui/icons";
@@ -66,6 +65,7 @@ const Scan = (props) => {
           <Grid item marginRight="auto" width="25em">
             <img
               src={screenshot}
+              alt="screenshot"
               style={{ width: "100%", height: "100%", borderRadius: "2em" }}
             />
           </Grid>
