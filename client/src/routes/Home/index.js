@@ -52,7 +52,11 @@ const Home = (props) => {
       </Grid>
 
       <Grid item style={{ marginTop: "3em" }}>
-        <Button variant="outlined" startIcon={<PhotoCamera />}>
+        <Button
+          variant="outlined"
+          startIcon={<PhotoCamera />}
+          onClick={() => props.history.push("/scan")}
+        >
           Scan Ingredients
         </Button>
       </Grid>
