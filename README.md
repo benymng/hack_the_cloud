@@ -1,12 +1,15 @@
 <div align="center">
-    <img src="assets/images/thumbnail.png" >
+    <img src="assets/images/logo.png" >
 </div>
 
-<div align="center" style="margin-top: 2em">
-  <a href="http://captaincook.michaelxu.tech">
-    <img src="assets/images/logo.png" >
-  </a>
-  <div style="font-style: italic">Working demo</div>
+<h1 align="center">Captain Cook</h1>
+
+<div align="center">
+
+Captain Cook is a web application built with [React](https://reactjs.org/) and [Flask](https://flask.palletsprojects.com/) aimed at making home cooking easier than ever! Using [Google Cloud Vision](https://cloud.google.com/vision), users are able to take a snapshot of their ingredients and instantly find recipes. Users can _swipe_ through recipes using gesture controls, implemented using [MediaPipe](https://mediapipe.dev/).
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7a19c61f-74b9-4a94-a449-fc766a3cea2e/deploy-status)](https://app.netlify.com/sites/captain-cook/deploys)
+
 </div>
 
 # [Devpost](https://devpost.com/software/captain-cook-3k16j2)
