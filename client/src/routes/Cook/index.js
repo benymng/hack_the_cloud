@@ -81,7 +81,9 @@ const Cook = (props) => {
     setStep(step - 1);
   };
 
-  const cancel = () => {};
+  const cancel = () => {
+    props.history.push("/");
+  };
 
   const replay = () => {};
 
@@ -162,16 +164,16 @@ const Cook = (props) => {
         </Grid>
 
         <Grid item>
-          <IconButton>
+          <IconButton onClick={cancel}>
             <ClearRounded fontSize="large" style={{ color: red[500] }} />
           </IconButton>
         </Grid>
 
-        <Grid item>
+        {/* <Grid item>
           <IconButton>
             <ReplayRounded fontSize="large" style={{ color: blueGrey[500] }} />
           </IconButton>
-        </Grid>
+        </Grid> */}
 
         <Grid item>
           <IconButton onClick={forward} disabled={disableForward}>
