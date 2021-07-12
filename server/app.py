@@ -1,5 +1,6 @@
 from flask import Flask, make_response, jsonify, request
 from flask_cors import CORS
+import urllib
 # from google.cloud import texttospeech
 # from flask_socketio import SocketIO
 
@@ -27,7 +28,7 @@ def search():
     # if "query" not in request.json:
     #     return make_response(jsonify({}), 400)
     query = request.json["query"]
-    url = "https://www.allrecipes.com/search/results/?search=" + query
+    url = "https://www.allrecipes.com/search/results/?search=" + urllib.parse.quote(query)
     found_html = scrape.find_html(url)
 
     names = scrape.find_recipe_names(found_html)

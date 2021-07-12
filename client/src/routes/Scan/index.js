@@ -19,7 +19,6 @@ const videoConstraints = {
 const Scan = (props) => {
   const webcamRef = useRef(null);
   const [screenshot, setScreenshot] = useState(null);
-  const [ingredients, setIngredients] = useState([]);
   const [mode, setMode] = useState("capture");
 
   const { identifyIngredients } = useRecipeAPI();

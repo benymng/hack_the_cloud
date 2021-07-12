@@ -18,6 +18,7 @@ const Search = (props) => {
   const searchField = props.location.state?.searchField;
 
   useEffect(() => {
+    if (props.location.state?.searchResults) return;
     searchAllRecipes(searchField, (results) => {
       setLoading(false);
       setSearchResults(results);
